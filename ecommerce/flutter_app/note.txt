@@ -1,5 +1,7 @@
 How to build apk and abb file ??
 
+flutter doc for build : https://docs.flutter.dev/deployment/android
+
 step 1: Create an upload keystore
 command : keytool -genkey -v -keystore C:\Users\rezau\upload-keystore.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias upload
 
@@ -8,6 +10,14 @@ storePassword=<password-from-previous-step>
 keyPassword=<password-from-previous-step>
 keyAlias=upload
 storeFile=<keystore-file-location>
+
+Step additional  local.properties file check 
+flutter.sdk=C:\\mobileDev\\flutter
+flutter.buildMode=release
+flutter.versionName=1.0.0
+flutter.versionCode=1
+sdk.dir=C:\\Users\\rezau\\AppData\\Local\\Android\\Sdk
+
 
 
 step 3: edit the <project>/android/app/build.gradle File
