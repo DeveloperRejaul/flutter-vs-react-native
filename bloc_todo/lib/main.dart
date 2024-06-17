@@ -1,11 +1,9 @@
-import 'package:bloc_auth/app_bloc_observer.dart';
-import 'package:bloc_auth/bloc/auth_bloc.dart';
-import 'package:bloc_auth/pages/login_page.dart';
+import 'package:bloc_todo/cubit/todo_cubit.dart';
+import 'package:bloc_todo/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  Bloc.observer = AppBlocObserver();
   runApp(const MyApp());
 }
 
@@ -15,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthBloc(),
+      create: (context) => TodoCubit(),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -23,7 +21,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home: const LoginPage(),
+        home: const HomePage(),
       ),
     );
   }

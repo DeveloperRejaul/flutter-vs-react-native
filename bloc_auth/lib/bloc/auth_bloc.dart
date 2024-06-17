@@ -42,11 +42,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   void _authLogOutRequested(
-    AuthLogOutRequested event,
-    Emitter<AuthState> emit,
-  ) async {
+      AuthLogOutRequested event, Emitter<AuthState> emit) async {
     emit(AuthLoading());
-
     try {
       await Future.delayed(const Duration(seconds: 2), () {
         return emit(AuthInitial());
