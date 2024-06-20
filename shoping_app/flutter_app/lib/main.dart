@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/core/constants/routes_path.dart';
 import 'package:flutter_app/core/theme/theme.dart';
-import 'package:flutter_app/core/utils/key_value_stores.dart';
 import 'package:flutter_app/futures/auth/bloc/auth_bloc.dart';
 import 'package:flutter_app/futures/auth/pages/forgot_password.dart';
 import 'package:flutter_app/futures/auth/pages/login.dart';
