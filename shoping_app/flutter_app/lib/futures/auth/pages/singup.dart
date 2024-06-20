@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/futures/auth/view/widgets/custom_button.dart';
-import 'package:flutter_app/futures/auth/view/widgets/custom_field.dart';
+import 'package:flutter_app/futures/auth/widgets/custom_button.dart';
+import 'package:flutter_app/futures/auth/widgets/custom_field.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart' as ResponsiveSizer;
 
