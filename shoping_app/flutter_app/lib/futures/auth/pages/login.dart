@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/core/constants/routes_path.dart';
+import 'package:flutter_app/core/utils/storage.dart';
 import 'package:flutter_app/futures/auth/bloc/auth_bloc.dart';
 import 'package:flutter_app/futures/auth/widgets/custom_button.dart';
 import 'package:flutter_app/futures/auth/widgets/custom_field.dart';
@@ -55,20 +56,29 @@ class _LoginPageState extends State<LoginPage> {
               child: SingleChildScrollView(
                 child: BlocConsumer<AuthBloc, AuthState>(
                   listener: (context, state) async {
+                    // handle Failure message
+                    if (state is AuthFailure) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text(state.message)),
+                      );
+                    }
+
                     // handle successful message
                     if (state is AuthSuccess) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text("Login successful")),
                       );
 
-                      Get.offNamed(RoutesPath.home);
-                    }
-
-                    // handle Failure message
-                    if (state is AuthFailure) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text(state.message)),
+                      await Storage.writeStr(
+                        'refresh_token',
+                        state.refresh_token,
                       );
+                      await Storage.writeStr(
+                        'access_token',
+                        state.access_token,
+                      );
+
+                      Get.offNamed(RoutesPath.home);
                     }
                   },
                   builder: (context, state) {

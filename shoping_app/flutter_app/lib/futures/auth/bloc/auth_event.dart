@@ -13,3 +13,8 @@ class AuthLoginRequested extends AuthEvent {
 class AuthSignUpRequested extends AuthEvent {}
 
 class AuthLogoutRequested extends AuthEvent {}
+
+class AuthLoginCheckRequested extends AuthEvent {
+  final String token;
+  AuthLoginCheckRequested({required this.token});
+}

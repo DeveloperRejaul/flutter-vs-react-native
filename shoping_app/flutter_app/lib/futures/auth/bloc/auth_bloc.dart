@@ -14,6 +14,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthLoginRequested>(_authLoginRequested);
     on<AuthLogoutRequested>(_authLogoutRequested);
     on<AuthSignUpRequested>(_authSignUpRequested);
+    on<AuthLoginCheckRequested>(_authLoginCheckRequested);
   }
 
 // handle login
@@ -50,4 +51,25 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
 // handle logout
   _authLogoutRequested(event, emit) {}
+
+// handle auth login check
+  _authLoginCheckRequested(
+    AuthLoginCheckRequested event,
+    Emitter<AuthState> emit,
+  ) async {
+    try {
+      var url = Uri.parse("$apiUrl/auth/profile");
+      emit(AuthLoading());
+      final res = await http.get(
+        url,
+        headers: {"Authorization": "Bearer ${event.token}"},
+      );
+      if (res.statusCode != 200) {
+        return emit(AuthFailure("Unauthenticated user please login "));
+      }
+      return emit(AuthCheckSuccess());
+    } catch (e) {
+      return emit(AuthFailure(e.toString()));
+    }
+  }
 }

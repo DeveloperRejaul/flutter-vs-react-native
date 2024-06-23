@@ -5,6 +5,14 @@ sealed class AuthState {}
 
 final class AuthInitial extends AuthState {}
 
+final class AuthFailure extends AuthState {
+  final String message;
+  AuthFailure(this.message);
+}
+
+final class AuthLoading extends AuthState {}
+
+// auth login
 final class AuthSuccess extends AuthState {
   final String access_token;
   final String refresh_token;
@@ -14,9 +22,12 @@ final class AuthSuccess extends AuthState {
   });
 }
 
-final class AuthFailure extends AuthState {
+// auth login check
+final class AuthCheckSuccess extends AuthState {}
+
+final class AuthCheckFailure extends AuthState {
   final String message;
-  AuthFailure(this.message);
+  AuthCheckFailure(this.message);
 }
 
-final class AuthLoading extends AuthState {}
+final class AuthCheckLoading extends AuthState {}
