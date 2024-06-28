@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_riverpod/future_provider/future_provider.dart';
 import 'package:learn_riverpod/provider/provider.dart';
 import 'package:learn_riverpod/state_notifier_and_state_notifier_provider/state_notifier_and_state_notifier_provider.dart';
 import 'package:learn_riverpod/state_provider/state_provider.dart';
@@ -22,6 +23,7 @@ class MyHomePage extends StatelessWidget {
             ProviderExample(),
             StateProviderExample(),
             StateNotifierAndStateNotifierProviderExample(),
+            FutureProviderExample()
           ],
         ),
       ),
